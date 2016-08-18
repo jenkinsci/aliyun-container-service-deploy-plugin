@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.aliyun.www</groupId>
 	<artifactId>aliyun-container-service-deploy</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 
 	<properties>
@@ -80,13 +80,13 @@
 	<repositories>
 		<repository>
 			<id>repo.jenkins-ci.org</id>
-			<url>http://repo.jenkins-ci.org/public/</url>
+			<url>https://repo.jenkins-ci.org/public/</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
 			<id>repo.jenkins-ci.org</id>
-			<url>http://repo.jenkins-ci.org/public/</url>
+			<url>https://repo.jenkins-ci.org/public/</url>
 		</pluginRepository>
 	</pluginRepositories>
 	<!-- If you want to depend on other plugins: <dependencies> <dependency> 
@@ -94,8 +94,8 @@
 		<version>1.9.4</version> </dependency> </dependencies> -->
 	<scm>
   		<connection>scm:git:git://github.com/jenkinsci/aliyun-container-service-deploy-plugin.git</connection>
-  		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/aliyun-container-service-deploy-plugin.git</developerConnection>
-  		<url>https://github.com/jenkinsci/aliyun-container-service-deploy-plugin</url>
+  		<developerConnection>scm:git:git@github.com:/jenkinsci/aliyun-container-service-deploy-plugin.git</developerConnection>
+  		<url>http://github.com/jenkinsci/aliyun-container-service-deploy-plugin</url>
 	  <tag>aliyun-container-service-deploy-0.1.0</tag>
   </scm>
 
