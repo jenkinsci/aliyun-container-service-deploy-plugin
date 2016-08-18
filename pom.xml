@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.aliyun.www</groupId>
 	<artifactId>aliyun-container-service-deploy</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>hpi</packaging>
 
 	<properties>
@@ -96,7 +96,7 @@
   		<connection>scm:git:git://github.com/jenkinsci/aliyun-container-service-deploy-plugin.git</connection>
   		<developerConnection>scm:git:git@github.com:jenkinsci/aliyun-container-service-deploy-plugin.git</developerConnection>
   		<url>http://github.com/jenkinsci/aliyun-container-service-deploy-plugin</url>
-	  <tag>aliyun-container-service-deploy-0.1.0</tag>
+	  <tag>aliyun-container-service-deploy-0.1.1</tag>
   </scm>
 
 </project>
