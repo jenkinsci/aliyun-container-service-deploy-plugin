@@ -8,9 +8,9 @@
 		<version>2.5</version>
 		<relativePath />
 	</parent>
-	<groupId>com.aliyun.www</groupId>
+	<groupId>org.jenkins-ci.plugins</groupId>
 	<artifactId>aliyun-container-service-deploy</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 
 	<properties>
@@ -30,8 +30,8 @@
 	</properties>
 
 	<name>Aliyun-Container-Service-Deploy</name>
-	<description>Aliyun-Container-Service-Deploy</description>
-	<!--<url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>-->
+	<description>Enable Jenkins to deploy applications to Aliyun Container Service.</description>
+	<url>https://wiki.jenkins-ci.org/display/JENKINS/Aliyun+Container+Service+Deploy+Plugin</url>
 
 	<!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for 
 		the applicable one if needed. -->
