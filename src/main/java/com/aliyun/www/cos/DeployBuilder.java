@@ -74,6 +74,7 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
     private String appName;
     private String composeTemplate;
     private String compose;
+    public String publishStrategy;
     public Project project;
     // Fields in config.jelly must match the parameter names in the "DataBoundConstructor"
     @DataBoundConstructor
@@ -103,6 +104,13 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
     @DataBoundSetter
     public void setCredentialsId(String credentialsId) {
         this.credentialsId = credentialsId;
+    }
+
+    public String getPublishStrategy() {return this.publishStrategy; }
+
+    @DataBoundSetter
+    public void setPublishStrategy(String publishStrategy) {
+        this.publishStrategy = publishStrategy;
     }
 
     @Override
@@ -141,7 +149,7 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
                     String time="";
                     SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
                     time = df.format(new Date());
-                    returnMsg = project.RefreshProject(appName, compose, time);
+                    returnMsg = project.RefreshProject(appName, compose, time, publishStrategy);
                 }
                 else {
                     returnMsg = project.AddProject(appName, compose);
@@ -150,6 +158,12 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
                 if(returnMsg.getIsSuccess()) {
                     listener.getLogger().println("returnCode is : " + returnMsg.getReturnCode());
                     listener.getLogger().println("Send deploy request successful!");
+                    try {
+                        waitForProject(60, listener);
+                    } catch (Exception e) {
+                        listener.getLogger().println("error happen when wait for deploy project, " + e.getMessage());
+                        return;
+                    }
                 }
                 else {
                     listener.getLogger().println("returnCode is : " + returnMsg.getReturnCode());
@@ -158,12 +172,6 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
 
                 }
 
-                try {
-                    waitForProject(60, listener);
-                } catch (Exception e) {
-                    listener.getLogger().println("error happen when wait for deploy project, " + e.getMessage());
-                    return;
-                }
 
 
                 project.destroy();
@@ -192,6 +200,11 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
                     listener.getLogger().println(
                             "deploy failed! " + Objects.toString(status));
                             throw new RuntimeException("deploy failed!");
+                }
+                if("null".equals(status)){
+                    listener.getLogger().println(
+                            "deploy failed! " + Objects.toString(status));
+                    throw new RuntimeException("deploy failed!");
                 }
                 try {
                     listener.getLogger().println(
@@ -260,7 +273,13 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
                     .withEmptySelection()
                     .withMatching(CredentialsMatchers.always(), credentials);
         }
-        
+
+        public ListBoxModel doFillPublishStrategyItems() {
+            ListBoxModel items = new ListBoxModel();
+            items.add("蓝绿发布","blue-green");
+            items.add("标准发布","rolling");
+            return items;
+        }
         /**
          * Performs on-the-fly validation of the form field 'name'.
          *

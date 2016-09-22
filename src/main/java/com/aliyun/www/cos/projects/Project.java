@@ -96,12 +96,12 @@ public class Project {
         return returnMsg;
     }
 
-    public ReturnMsg RefreshProject(String projectName, String compose, String version){
+    public ReturnMsg RefreshProject(String projectName, String compose, String version, String publishStrategy){
         ReturnMsg returnMsg = new ReturnMsg();
         int returnCode = 0;
         CloseableHttpResponse response;
         String updateUrl = masterurl + projectName+ "/update";
-        HttpPost httpPost = GenerateHttpPost(updateUrl, compose, projectName, version);
+        HttpPost httpPost = GenerateHttpPost(updateUrl, compose, projectName, version, publishStrategy);
         try {
             response = httpclient.execute(httpPost);
             returnCode = response.getStatusLine().getStatusCode();
@@ -136,12 +136,13 @@ public class Project {
 
     }
 
-    public HttpPost GenerateHttpPost(String url, String compose, String projectName, String version){
+    public HttpPost GenerateHttpPost(String url, String compose, String projectName, String version, String publishStrategy){
         HttpPost httpPost = new HttpPost(url);
         JSONObject jsonParam = new JSONObject();
         jsonParam.put("name",projectName);
         jsonParam.put("template",compose);
         jsonParam.put("version",version);
+        jsonParam.put("update_method",publishStrategy);
         System.out.println(jsonParam.toString());
         if(null!=jsonParam){
             StringEntity entity = new StringEntity(jsonParam.toString(),"utf-8");
