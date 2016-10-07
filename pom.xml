@@ -107,7 +107,6 @@
   		<developerConnection>scm:git:git@github.com:jenkinsci/aliyun-container-service-deploy-plugin.git</developerConnection>
   		<url>http://github.com/jenkinsci/aliyun-container-service-deploy-plugin</url>
 	  <tag>aliyun-container-service-deploy-0.1.1</tag>
-    <tag>HEAD</tag>
   </scm>
 
 </project>
