@@ -8,9 +8,9 @@
 		<version>2.5</version>
 		<relativePath />
 	</parent>
-	<groupId>com.aliyun.www</groupId>
+	<groupId>org.jenkins-ci.plugins</groupId>
 	<artifactId>aliyun-container-service-deploy</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.1-SNAPSHOT</version>
 	<packaging>hpi</packaging>
 
 	<properties>
