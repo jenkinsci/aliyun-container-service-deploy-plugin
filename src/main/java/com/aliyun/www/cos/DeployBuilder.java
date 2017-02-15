@@ -267,7 +267,7 @@ public class DeployBuilder extends Builder implements SimpleBuildStep {
 
         public ListBoxModel doFillCredentialsIdItems(@AncestorInPath ItemGroup context) {
             List<StandardCredentials> credentials =
-                    CredentialsProvider.lookupCredentials(StandardCredentials.class, context, ACL.SYSTEM,
+                    CredentialsProvider.lookupCredentials(StandardCredentials.class, context, Jenkins.getAuthentication(),
                             Collections.<DomainRequirement>emptyList());
             return new CredentialsListBoxModel()
                     .withEmptySelection()

@@ -21,7 +21,7 @@
     <f:textbox value="${it.composeTemplate}"/>
   </f:entry>
   <f:entry title="Host Credentials" field="credentialsId">
-  	<c:select />
+  	<c:select includeUser='true'/>
   </f:entry>
   <f:entry title="Publish Strategy" field="publishStrategy">
     <f:select />
